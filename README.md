@@ -1,79 +1,152 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# REACT NETIVE Base Template 🚀
 
-# Getting Started
+**A polished React Native + TypeScript starter template focused on productivity and best practices.**
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+This repository provides a clean, well-organized foundation for building cross-platform React Native apps with TypeScript, Redux, React Navigation, and common utilities pre-configured.
 
-## Step 1: Start the Metro Server
+---
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## 🔧 Key Features
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- TypeScript-ready project structure
+- React Navigation (stack, drawer, bottom tabs)
+- Redux with `@reduxjs/toolkit`, `redux-thunk` and `redux-persist`
+- Axios configured for API calls
+- Reusable UI components (`Button`, `Card`, `Loader`, etc.)
+- Theming, colors, and fonts support
+- Jest testing scaffolded
+- ESLint + Prettier for code quality
+
+---
+
+## 🧩 Quick Start
+
+Prerequisites:
+- Node.js >= 18
+- Yarn (or npm)
+- Android SDK (for Android) / Xcode (for iOS)
+- (macOS only) CocoaPods for iOS: `sudo gem install cocoapods`
+
+Install dependencies:
 
 ```bash
-# using npm
-npm start
+# Using yarn
+yarn install
 
-# OR using Yarn
+# or npm
+npm install
+```
+
+iOS setup (macOS):
+
+```bash
+cd ios
+pod install
+cd ..
+```
+
+Run the Metro bundler and app:
+
+```bash
+# Start Metro
 yarn start
-```
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
+# Run on Android (device/emulator)
 yarn android
-```
 
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
+# Run on iOS (macOS)
 yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+Test and lint:
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+```bash
+yarn test
+yarn lint
+```
 
-## Step 3: Modifying your App
+---
 
-Now that you have successfully run the app, let's modify it.
+## 🗂 Project Structure (overview)
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+Top-level notable folders/files:
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+- `App.tsx` - app entrypoint
+- `app/` - main application source
+  - `components/` - reusable component library
+  - `screens/` - app screens grouped by feature
+  - `navigation/` - navigation stacks and navigators
+  - `redux/` - store, reducers, persist config, hooks
+  - `config/` - Axios and other app-level configs
+  - `constants/` - colors, fonts, image paths
+  - `assets/` - fonts & images used across the app
+- `jest.config.js`, `tsconfig.json`, `babel.config.js` - tooling configuration
+- `react-native.config.js` - native linking and asset config
 
-## Congratulations! :tada:
+> Tip: The structure is intentionally modular to make adding features and tests straightforward.
 
-You've successfully run and modified your React Native App. :partying_face:
+---
 
-### Now what?
+## 🔁 State Management
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+This template uses `@reduxjs/toolkit` + `redux-thunk` and persists state using `redux-persist`. See `app/redux/store` and `app/redux/store/persistConfig.ts` for configuration details.
 
-# Troubleshooting
+---
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## 📡 Networking
 
-# Learn More
+API calls are centralized with Axios in `app/config/AxiosConfig.ts`. You can add base URLs and interceptors here for authentication, logging, and error handling.
 
-To learn more about React Native, take a look at the following resources:
+---
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## 🧪 Testing
+
+This template includes Jest and `react-test-renderer`. Tests live under `__tests__/`. Run tests with `yarn test`.
+
+---
+
+## 🛠 Common Tasks / Scripts
+
+- `yarn start` - Start Metro bundler
+- `yarn android` - Run app on Android
+- `yarn ios` - Run app on iOS (macOS)
+- `yarn test` - Run Jest tests
+- `yarn lint` - Run ESLint across the project
+
+---
+
+## ✍️ How to Add a Screen
+
+1. Create a folder in `app/screens/<feature>/screens/` and add your screen component.
+2. Register the new screen in the appropriate navigator inside `app/navigation/StackNavigators/`.
+3. Add styles to the local styles file and tests if needed.
+
+---
+
+## 🎨 Adding Fonts or Images
+
+- Add font files in `app/assets/fonts` and declare them in `react-native.config.js` (already present in this template).
+- Run the appropriate native linking step if needed (modern RN supports autolinking).
+
+---
+
+## ✅ Contribution
+
+Contributions are welcome. Please open an issue first for major changes and submit pull requests for fixes, features or documentation improvements. Keep code style consistent with existing patterns and update tests when applicable.
+
+---
+
+## 📄 License
+
+MIT — feel free to reuse and adapt this template for your projects.
+
+---
+
+## 👤 Maintainer
+
+- Maintainer: **@MadhusudanGhule**
+
+---
+
+If you want a customized README (e.g., a shorter version, CI badges, or specific setup for a CI provider), tell me which parts to emphasize and I'll update it. ✅
+
